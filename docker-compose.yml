@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  server:
+    build: ./server
+    environment:
+      - TZ=America/Sao_Paulo
+    container_name: bbs_server
+    volumes:
+      - ./server:/app
+    working_dir: /app
+    ports:
+      - "5555:5555"
+
+  client:
+    build: ./client
+    environment:
+      - TZ=America/Sao_Paulo
+    container_name: bbs_client
+    depends_on:
+      - server
+    
+  bot:
+    build: ./bot
+    environment:
+      - TZ=America/Sao_Paulo
+    container_name: bbs_bot
+    depends_on:
+      - server
+    
+    # if you want multiple bot replicas, run: docker compose up --scale bot=2

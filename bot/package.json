@@ -1,0 +1,8 @@
+{
+  "name": "bbs-bot",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "zeromq": "^6.0.0"
+  }
+}
